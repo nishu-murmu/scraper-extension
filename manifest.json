@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "version": "0.1.0",
+  "name": "Pomodoro Tracker",
+  "permissions": ["activeTab", "scripting"],
+  "description": "This is my first browser extension where I'm practise making demo pomodoro tracker",
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "css": ["popup.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_icon": "assets/pomodoro.png",
+    "default_popup": "popup.html"
+  }
+}

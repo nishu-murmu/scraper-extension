@@ -1,0 +1,86 @@
+:root {
+  --black: #1a1a1a;
+  --gray-500: #4d4d4d;
+  --gray-300: #737373;
+}
+
+#pomodoro-body {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  background-image: url("./assets/background.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: auto;
+  width: 300px;
+}
+#heading {
+  margin: 0 auto;
+  padding: 15px 5px;
+  color: var(--black);
+  font-size: 25px;
+  font-weight: 600;
+}
+
+#content {
+  padding: 20px 10px;
+}
+#timer-clock {
+  position: relative;
+  border: 2px solid var(--gray-500);
+  height: 160px;
+  width: 160px;
+  border-radius: 100%;
+}
+
+#timer-value {
+  position: absolute;
+  font-size: 30px;
+  top: 61px;
+  left: 34px;
+}
+
+#toggle-start-stop {
+  text-align: center;
+  background: transparent;
+  font-size: 20px;
+  color: var(--gray-500);
+  border: 1px solid var(--gray-300);
+  border-radius: 10px;
+  padding: 10px 18px;
+}
+
+#reset {
+  text-align: center;
+  background: transparent;
+  font-size: 20px;
+  color: var(--gray-500);
+  border: 1px solid var(--gray-300);
+  border-radius: 10px;
+  padding: 10px 18px;
+}
+#toggle-start-stop:hover {
+  cursor: pointer;
+}
+#reset:hover {
+  cursor: pointer;
+}
+
+
+#custom-timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 0px;
+}
+
+#customer-timer h4 {
+  padding: 10px 0px;
+}
+
+#time {
+  padding: 4px 8px;
+  border: none;
+  background: transparent;
+}
