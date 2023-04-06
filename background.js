@@ -1,32 +1,46 @@
-console.log("background running")
+// creating new tab when the extension loads
+chrome.runtime.connect
+chrome.runtime.onInstalled.addListener(({ reason }) => {
+  if (reason === "install") {
+    chrome.tabs.create({
+      url: "onboarding.html",
+    })
+  }
+})
 
-// let intervalId = -1
-// let duration
+//getting current tab
 //
-// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-//     if (request.action === "start") {
-//         duration = request.duration
-//         if (intervalId === -1) {
-//             intervalId = setInterval(() => {
-//                 duration -= 1000
-//                 let minutes = Math.floor(duration / (1000 * 60))
-//                 let seconds = Math.floor((duration % (1000 * 60)) / 1000)
-//                 chrome.storage.local.set({ value: `${minutes}:${seconds}` })
-//                 sendResponse({ value: `${minutes}:${seconds}` })
-//             }, 1000)
-//         }
-//     } else if (request.action === "pause") {
-//         clearInterval(intervalId)
-//         intervalId = -1
-//     }
-// })
-//
-// chrome.storage.local.get(["value"], (result) => {
-//     if (result.value) {
-//         const storedValue = result.value.split(":").map((item) => Number(item))
-//         duration = storedValue[0] * 60 * 1000 + storedValue[1] * 1000
-//     } else {
-//         duration = 25 * 60 * 1000
-//         chrome.storage.local.set({ value: "25:00" })
-//     }
-// })
+async function getCurrentWindow() {
+  let queryOptions = { active: true, lastFocusedWindow: true }
+  let [tab] = await chrome.tabs.query(queryOptions)
+  return tab
+}
+
+const getValue = async () => {
+  const value = await getCurrentWindow()
+}
+
+getValue()
+
+// making tab goes to first when the user clicks on the tab or when the new tab gets created
+// chrome.tabs.onActivated.addListener(moveToFirstPosition)
+
+async function moveToFirstPosition(activeInfo) {
+  try {
+    await chrome.tabs.move(activeInfo.tabId, { index: 0 })
+  } catch (error) {
+    if (
+      error ==
+      "Error: Tabs cannot be edited right now (user may be dragging a tab)."
+    ) {
+      setTimeout(() => moveToFirstPosition(activeInfo), 50)
+    } else {
+      console.error(error)
+    }
+  }
+}
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    console.log(message, 'log from background script')
+    sendResponse({message: "response mila hai and print in content script"})
+})
