@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       const tab = tabs[0]
       chrome.tabs.sendMessage(tab.id, { type: "from-popup" }, (response) => {
-        console.log(response)
+        console.log(response, 'response')
       })
     })
   })
