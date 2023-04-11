@@ -1,0 +1,10 @@
+*, body, html {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}

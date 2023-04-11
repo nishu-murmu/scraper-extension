@@ -17,11 +17,13 @@ const scrapperConfigs = {
         },
         postprocess: function postprocess() {
             cards.forEach((card) => {
-                const elem = `<button>Add</button><button>Reject</button>`
-                const element = document.createElement('div')
-                element.classList.add('btn-group')
-                element.innerHTML = elem
-                card.appendChild(element)
+                const couponId = card.getAttribute("id")
+                render_template({ couponId }, "btnGroup").then(
+                    (addBtnGroup) => {
+                        console.log(addBtnGroup);
+                        card.innerHTML += addBtnGroup;
+                    }
+                );
             })
         },
         isVerified: "div > div > .offer-tag-block > .verified-tag",

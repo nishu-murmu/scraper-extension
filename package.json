@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@types/chrome": "^0.0.228"
+    "@types/chrome": "^0.0.228",
+    "@types/mustache": "^4.2.2"
   }
 }

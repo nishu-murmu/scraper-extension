@@ -4,6 +4,7 @@
   flex-direction: column;
   width: 220px;
   height: auto;
+  row-gap: 10px;
 }
 
 .scrape {
@@ -22,9 +23,32 @@
   font-weight: 500;
   border-color: rgba(255, 0, 0, 0.8);
 }
+
 .scrape:active {
-    transform: translateY(4px);
-    background-color: #A30000;
-    box-shadow: 0 2px #FF0000;
+  transform: translateY(4px);
+  background-color: #A30000;
+  box-shadow: 0 2px #FF0000;
 }
 
+.option {
+  padding: 4px 10px;
+  color: white;
+  border: 2px solid grey;
+  font-size: 18px;
+  background-color: gray;
+  border-radius: 8px;
+  box-shadow: 0 4px darkslategray;
+  box-shadow: inset;
+}
+
+.option:hover {
+  cursor: pointer;
+  font-weight: 500;
+  border-color: gray;
+}
+
+.option:active {
+  transform: translateY(4px);
+  background-color: darkslategray;
+  box-shadow: 0 2px gray;
+}

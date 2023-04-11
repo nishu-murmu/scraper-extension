@@ -3,7 +3,7 @@ console.log('background')
 chrome.runtime.onInstalled.addListener(({ reason }) => {
     if (reason === "install") {
         chrome.tabs.create({
-            url: "onBoard.html",
+            url: "src/options/onBoard.html",
         })
     }
 })
