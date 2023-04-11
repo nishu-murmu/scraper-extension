@@ -1,5 +1,5 @@
+console.log('background')
 // creating new tab when the extension loads
-console.log('background');
 chrome.runtime.onInstalled.addListener(({ reason }) => {
     if (reason === "install") {
         chrome.tabs.create({

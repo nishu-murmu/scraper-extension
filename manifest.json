@@ -6,12 +6,17 @@
   "permissions": ["activeTab", "storage", "scripting", "tabs"],
   "content_scripts": [
     {
-      "matches": ["https://www.coupondunia.in/*", "https://www.grabon.in/*"],
+      "matches": [
+        "https://www.coupondunia.in/*",
+        "https://www.grabon.in/*",
+        "https://zoutons.com/*"
+      ],
       "js": [
         "src/scrapperConfigs.js",
         "src/scrapper.js",
         "src/content-script.js"
-      ]
+      ],
+      "css": ["styles/main.css"]
     }
   ],
   "background": {
@@ -19,7 +24,7 @@
   },
   "action": {
     "default_icon": "assets/S.png",
-    "default_title": "Scraper for Coupon Duniya",
+    "default_title": "Scraper for cashback websites",
     "default_popup": "src/popup/popup.html"
   }
 }

@@ -8,7 +8,6 @@ function getScrapedData(key) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const resultData = scrapeData({config: scrapperConfigs[key], key})
-      console.log(resultData, "resultData")
       if (resultData) resolve(resultData)
       else reject("No Data scraped!")
     }, 2000)
@@ -21,6 +20,7 @@ chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
     getScrapedData(key)
       .then((result) => {
         sendResponse(result)
+        scrapperConfigs[key]?.postprocess()
       })
       .catch((err) => {
         console.error(err)

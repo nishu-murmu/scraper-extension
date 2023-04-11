@@ -15,6 +15,15 @@ const scrapperConfigs = {
                 })
             }, 1000)
         },
+        postprocess: function postprocess() {
+            cards.forEach((card) => {
+                const elem = `<button>Add</button><button>Reject</button>`
+                const element = document.createElement('div')
+                element.classList.add('btn-group')
+                element.innerHTML = elem
+                card.appendChild(element)
+            })
+        },
         isVerified: "div > div > .offer-tag-block > .verified-tag",
         peopleUsed: "div > div > .offer-tag-block > .used-tag",
         heading: "div > div > .offer-details-flexbox > div .offer-title",
@@ -32,10 +41,45 @@ const scrapperConfigs = {
             })
 
         },
+        postprocess: function postprocess() {
+            cards.forEach((card) => {
+                const elem = `<button>Add</button><button>Reject</button>`
+                const element = document.createElement('div')
+                element.classList.add('btn-group')
+                element.innerHTML = elem
+                card.appendChild(element)
+            })
+        },
         isVerified: "div > div > .gcbr-r > p > .verified",
         peopleUsed: "div > div > .gcbr-r > p > .usr",
         heading: "div > .gcbr > .bank >span",
         description: "div > .gcbr > p",
         details: "div > .gcb-det > ul"
+    },
+    "zoutons": {
+        preprocess() {
+            setTimeout(() => {
+                cards = document.querySelectorAll(".content > section > ul > li")
+                cards.forEach((card) => {
+                    const showDetailsButton = card.querySelector(
+                        "div > div > .bottom-container > .show_more"
+                    )
+                    showDetailsButton?.click()
+                })
+            }, 1000)
+        },
+        postprocess: function postprocess() {
+            cards.forEach((card) => {
+                const elem = `<button>Add</button><button>Reject</button>`
+                const element = document.createElement('div')
+                element.classList.add('btn-group')
+                element.innerHTML = elem
+                card.appendChild(element)
+            })
+        },
+        isVerified: "div > div > div > div > .meta .a",
+        peopleUsed: "div > div > div > div > .meta .info",
+        heading: "div > div > div > div > h3",
+        details: "div > div > span > ul"
     }
 }

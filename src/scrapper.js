@@ -5,13 +5,19 @@ function scrapeData({ config, key }) {
     let obj = {}
     const isVerified = card.querySelector(config?.isVerified)?.innerText
     const peopleUsed = card.querySelector(config?.peopleUsed)?.innerText
-    const heading = card.querySelector(config?.heading)?.innerText
-    const description = card.querySelector(config?.description).innerText
+    let heading = card.querySelector(config?.heading)?.innerText
+    let description = card.querySelector(config?.description)?.innerText
 
     let detailsList = []
     const details = card.querySelector(config.details)
-    if(details) details.childNodes.forEach((item) => detailsList.push(item.innerText))
+    if (details) details.childNodes.forEach((item) => detailsList.push(item.innerText))
     detailsList = detailsList.filter(Boolean)
+    if ([key][0].toString() === 'zoutons') {
+      if (heading?.includes('|') || heading?.includes(':')) {
+        description = heading?.split(/[:|]/g)[1].trim()
+        heading = heading?.split(/[:|]/g)[0].trim()
+      }
+    }
     obj = Object.assign(obj, {
       heading,
       description,
