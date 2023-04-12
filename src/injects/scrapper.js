@@ -1,5 +1,6 @@
+
 function scrapeData({ config, key }) {
-  console.log(config, 'config')
+  console.log(config, "config")
   const result = []
   cards.forEach((card) => {
     let obj = {}
@@ -10,10 +11,13 @@ function scrapeData({ config, key }) {
 
     let detailsList = []
     const details = card.querySelector(config.details)
-    if (details) details.childNodes.forEach((item) => detailsList.push(item.innerText))
+    const turnDownService = new TurndownService()
+    const value = turnDownService.turndown(details)
+    if (details)
+      details.childNodes.forEach((item) => detailsList.push(item.innerText))
     detailsList = detailsList.filter(Boolean)
-    if ([key][0].toString() === 'zoutons') {
-      if (heading?.includes('|') || heading?.includes(':')) {
+    if ([key][0].toString() === "zoutons") {
+      if (heading?.includes("|") || heading?.includes(":")) {
         description = heading?.split(/[:|]/g)[1].trim()
         heading = heading?.split(/[:|]/g)[0].trim()
       }
@@ -25,7 +29,7 @@ function scrapeData({ config, key }) {
       detailsList,
       peopleUsed: +peopleUsed?.split(" ")[0]
         ? +peopleUsed?.split(" ")[0]
-        : "null",
+        : undefined,
     })
     result.push(obj)
   })

@@ -16,11 +16,11 @@
         "lib/turndown/turndown.min.js",
         "lib/popper/popper.min.js",
         "src/utils.js",
-        "src/scrapperConfigs.js",
-        "src/scrapper.js",
-        "src/content-script.js"
+        "src/injects/scrapperConfigs.js",
+        "src/injects/scrapper.js",
+        "src/contents/content-script.js"
       ],
-      "css": ["styles/main.css"]
+      "css": ["src/styles/main.css"]
     }
   ],
   "background": {
