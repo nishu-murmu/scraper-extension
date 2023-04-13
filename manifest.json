@@ -15,9 +15,11 @@
         "lib/mustache/mustache.min.js",
         "lib/turndown/turndown.min.js",
         "lib/popper/popper.min.js",
+        "lib/jquery/jquery.min.js",
         "src/utils.js",
         "src/injects/scrapperConfigs.js",
         "src/injects/scrapper.js",
+        "src/injects/manipulations.js",
         "src/contents/content-script.js"
       ],
       "css": ["src/styles/main.css"]

@@ -12,7 +12,7 @@ function scrapeData({ config, key }) {
     let detailsList = []
     const details = card.querySelector(config.details)
     const turnDownService = new TurndownService()
-    const value = turnDownService.turndown(details)
+    const value = details && turnDownService.turndown(details)
     if (details)
       details.childNodes.forEach((item) => detailsList.push(item.innerText))
     detailsList = detailsList.filter(Boolean)
